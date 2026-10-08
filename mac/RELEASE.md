@@ -1,6 +1,6 @@
-# K10 Web Protection — v1.0.0 for macOS
+# K10 Web Protection: v1.0.0 for macOS
 
-> **Free, open-source parental control and web filtering — built exclusively for macOS.**
+> **Free, open-source parental control and web filtering, built exclusively for macOS.**
 > Blocks adult content, malware, and distracting websites silently and persistently in the background, without a monthly subscription.
 >
 > **Platform:** macOS 12 Monterey or later · Apple Silicon (M1/M2/M3/M4) and Intel
@@ -9,44 +9,44 @@
 
 ## Support This Project
 
-K10 Web Protection is **free and open source**. To distribute it without Gatekeeper warnings, an Apple Developer ID is required — this costs **€99/year**.
+K10 Web Protection is **free and open source**. To distribute it without Gatekeeper warnings, an Apple Developer ID is required, this costs **€99/year**.
 
-> 💛 **[Donate via PayPal](https://www.paypal.com/paypalme/Khaleeleu)** — any amount appreciated
+> **[Donate via PayPal](https://www.paypal.com/paypalme/Khaleeleu)**: any amount appreciated
 >
-> 🍎 **Goal:** Raise €99 for an Apple Developer ID so future releases install without security warnings
+> **Goal:** Raise €99 for an Apple Developer ID so future releases install without security warnings
 
 ---
 
-## ⚠️ Important — Read Before Installing
+## Important: Read Before Installing
 
 ### Gatekeeper Warning (macOS Security)
 
 This build is **not signed with an Apple Developer certificate**. When you download and open the `.pkg`, macOS will block it with a dialog:
 
-> *"K10WebProtection-1.0.0.pkg" Not Opened — Apple could not verify it is free of malware…*
+> *"K10WebProtection-1.0.0.pkg" Not Opened, Apple could not verify it is free of malware…*
 
-**This is normal.** It is a standard macOS requirement for all software distributed outside the App Store. K10 Web Protection is open source — you can inspect every line of code in this repository.
+**This is normal.** It is a standard macOS requirement for all software distributed outside the App Store. K10 Web Protection is open source, you can inspect every line of code in this repository.
 
 ---
 
-### How to open it — two options
+### How to open it: two options
 
 > **Note:** On macOS 13 Ventura and later, right-clicking → Open no longer bypasses this warning. Use one of the methods below.
 
 ---
 
-**Option A — System Settings (no Terminal required)**
+**Option A, System Settings (no Terminal required)**
 
 1. Click **Done** to close the warning (do not click "Move to Bin")
 2. Open **System Settings** → **Privacy & Security**
 3. Scroll down to the **Security** section
 4. You will see: *"K10WebProtection-1.0.0.pkg was blocked"*
 5. Click **Open Anyway** and enter your Mac password
-6. Double-click the `.pkg` again — the installer opens normally
+6. Double-click the `.pkg` again, the installer opens normally
 
 ---
 
-**Option B — Terminal (one command, fastest)**
+**Option B, Terminal (one command, fastest)**
 
 Open Terminal (search "Terminal" in Spotlight) and paste:
 
@@ -54,7 +54,7 @@ Open Terminal (search "Terminal" in Spotlight) and paste:
 xattr -d com.apple.quarantine ~/Downloads/K10WebProtection-1.0.0.pkg
 ```
 
-Then double-click the `.pkg` — no warning will appear.
+Then double-click the `.pkg`, no warning will appear.
 
 ---
 
@@ -62,9 +62,9 @@ This is a one-time step. Once installed, the app runs silently with no further w
 
 ---
 
-## ⚠️ Important — How to Safely Remove K10
+## Important: How to Safely Remove K10
 
-K10 Web Protection is designed to be **tamper-resistant** — it locks its own files to prevent easy removal. Because of this, **do not** try to drag the app to Trash. That will fail and may leave the system proxy enabled, breaking your internet.
+K10 Web Protection is designed to be **tamper-resistant**: it locks its own files to prevent easy removal. Because of this, **do not** try to drag the app to Trash. That will fail and may leave the system proxy enabled, breaking your internet.
 
 **The correct way to uninstall:**
 
@@ -72,7 +72,7 @@ K10 Web Protection is designed to be **tamper-resistant** — it locks its own f
 2. Go to **Setup → Password & Settings**
 3. Scroll to **Danger Zone**
 4. Click **Uninstall K10 Web Protection…**
-5. Enter your admin password — the app closes and removes itself completely
+5. Enter your admin password, the app closes and removes itself completely
 
 If K10 is already gone from `/Applications` and you need to force-clean:
 
@@ -103,7 +103,7 @@ rm -rf ~/.k10webprotection
 
 1. Download **`K10WebProtection-1.0.0.pkg`** from the release assets below
 2. Right-click → **Open** → **Open** (see Gatekeeper warning above)
-3. Follow the installer — enter your Mac password when prompted
+3. Follow the installer, enter your Mac password when prompted
 4. K10 Web Protection opens automatically when done
 
 ---
@@ -120,7 +120,7 @@ Change it immediately after install: **Setup → Password & Settings → New Pas
 
 ## What It Does
 
-K10 Web Protection sits silently between your browser and the internet. Every website request passes through it. Blocked sites never load — the user sees a clean block page instead.
+K10 Web Protection sits silently between your browser and the internet. Every website request passes through it. Blocked sites never load, the user sees a clean block page instead.
 
 It works across **Safari, Chrome, Firefox, and every other browser** because it operates at the network layer, not as a browser extension.
 
@@ -128,7 +128,7 @@ It works across **Safari, Chrome, Firefox, and every other browser** because it 
 
 | Layer | Technology | What it catches |
 |-------|-----------|-----------------|
-| **Content Proxy** | Local HTTP/HTTPS proxy on port 8080 | All web requests — blocks by category, domain, URL pattern, or keyword |
+| **Content Proxy** | Local HTTP/HTTPS proxy on port 8080 | All web requests, blocks by category, domain, URL pattern, or keyword |
 | **QUIC Firewall** | PF packet filter rule | Chrome's HTTP/3 (UDP) traffic that would otherwise bypass the proxy |
 | **HTTPS Interception** | TLS MITM with per-host certificates | Delivers the block page over HTTPS; enforces SafeSearch on Google & Bing |
 
@@ -164,7 +164,7 @@ Choose a pre-set **Filter Level** or go fully custom:
 | **Minimal** | Pornography + Malware + Phishing only |
 | **Moderate** | Adds Gambling, Hacking, Drugs, Violence |
 | **Default** | Adds Adult, Nudity, Alt. Sexuality, Dating, Proxy Bypass, and more |
-| **High** | Everything — including Social Media, Forums, Image Search, YouTube |
+| **High** | Everything, including Social Media, Forums, Image Search, YouTube |
 | **Custom** | You choose exactly which categories to block |
 
 ---
@@ -172,33 +172,33 @@ Choose a pre-set **Filter Level** or go fully custom:
 ### Focus Mode
 Temporarily block distracting social media sites with one click. Built-in sites include Facebook, Instagram, Twitter/X, TikTok, YouTube, Reddit, Discord, Twitch, Snapchat, Pinterest, LinkedIn, Telegram, and more. Add your own custom sites anytime.
 
-Set a **countdown timer** — Focus Mode automatically deactivates when time is up.
+Set a **countdown timer**: Focus Mode automatically deactivates when time is up.
 
 ---
 
 ### Time Restrictions
-Schedule when internet access is allowed. Set a daily time window (e.g. 08:00–22:00) for each day of the week independently. Outside those hours, all non-essential browsing is blocked.
+Schedule when internet access is allowed. Set a daily time window (e.g. 08:00 to 22:00) for each day of the week independently. Outside those hours, all non-essential browsing is blocked.
 
 - Supports overnight windows (e.g. 22:00 → 06:00)
 - Enable or disable individual days
-- Defaults: Mon–Fri 08:00–22:00, weekends configurable
+- Defaults: Mon to Fri 08:00 to 22:00, weekends configurable
 
 ---
 
 ### SafeSearch Enforcement
-Forces Google and Bing into strict SafeSearch mode — even if someone is logged in to a Google account and has SafeSearch turned off. The SafeSearch preference screen is blocked so it cannot be changed.
+Forces Google and Bing into strict SafeSearch mode, even if someone is logged in to a Google account and has SafeSearch turned off. The SafeSearch preference screen is blocked so it cannot be changed.
 
 ---
 
 ### Website Exceptions
 Override the filter for specific domains:
-- **Allow list** — always let through (e.g. a school website that shares a domain with blocked content)
-- **Block list** — always block, regardless of filter level (e.g. a specific game site)
+- **Allow list**: always let through (e.g. a school website that shares a domain with blocked content)
+- **Block list**: always block, regardless of filter level (e.g. a specific game site)
 
 ---
 
 ### URL Keywords
-Block any URL that contains a specific word or phrase — even on sites not in the database. Examples: `sex`, `nude`, `torrent`, `/adult/`. Applies to both HTTP and HTTPS connections.
+Block any URL that contains a specific word or phrase, even on sites not in the database. Examples: `sex`, `nude`, `torrent`, `/adult/`. Applies to both HTTP and HTTPS connections.
 
 ---
 
@@ -214,7 +214,7 @@ K10 is designed to stay running even if someone tries to stop it:
 - **LaunchAgent** restarts the app automatically after a force-quit
 - **Watchdog process** re-enables the system proxy and re-applies firewall rules every 10 seconds if they are removed
 - **Immutable flag (`uchg`)** on the binary and launch files prevents deletion without the admin password
-- **Password gate** on all changes — disable, uninstall, change settings, and change the password all require the current admin password
+- **Password gate** on all changes, disable, uninstall, change settings, and change the password all require the current admin password
 
 ---
 
@@ -224,10 +224,10 @@ K10 is designed to stay running even if someone tries to stop it:
 
 After installation, K10 opens automatically. You'll see the **Dashboard**:
 
-- **Blocked Today** — requests blocked since midnight
-- **Total Blocked** — all-time count
-- **Protection Modules** — status of each protection layer
-- **Top Blocked Categories** — chart of what's being caught
+- **Blocked Today**: requests blocked since midnight
+- **Total Blocked**: all-time count
+- **Protection Modules**: status of each protection layer
+- **Top Blocked Categories**: chart of what's being caught
 
 ### Changing the Filter Level
 
@@ -260,7 +260,7 @@ After installation, K10 opens automatically. You'll see the **Dashboard**:
 
 Click **Logout** → enter your password → protection pauses. Click **Enable Protection** to resume.
 
-You can set a **Disable Delay** (Setup → Password & Settings) to require a waiting period before protection can be disabled — useful for preventing impulsive bypasses.
+You can set a **Disable Delay** (Setup → Password & Settings) to require a waiting period before protection can be disabled, useful for preventing impulsive bypasses.
 
 ---
 
@@ -326,7 +326,7 @@ K10 Web Protection processes all traffic **locally on your Mac**. No browsing hi
 ## Building from Source
 
 ```bash
-# Prerequisites: Go 1.21+, Wails v2
+# Prerequisites: Go 1.21+: Wails v2
 go install github.com/wailsapp/wails/v2/cmd/wails@latest
 
 # Build the .pkg installer
@@ -339,7 +339,7 @@ See [README.md](README.md) for full build documentation.
 
 ---
 
-## Changelog — v1.0.0
+## Changelog: v1.0.0
 
 - Initial public release
 - 932,000+ domain blocklist across 29 categories (Block List Project, StevenBlack, OISD NSFW, HaGeZi, URLhaus, UT1)
@@ -347,7 +347,7 @@ See [README.md](README.md) for full build documentation.
 - Focus Mode with per-site toggles and countdown timer
 - Time Restrictions with per-day schedules and overnight window support
 - SafeSearch enforcement on Google and Bing via HTTPS interception
-- QUIC/HTTP3 firewall rule — prevents Chrome from bypassing the proxy over UDP
+- QUIC/HTTP3 firewall rule, prevents Chrome from bypassing the proxy over UDP
 - Complete in-app uninstaller
 - Password-protected admin panel
 - Activity log with Top Blocked Categories chart

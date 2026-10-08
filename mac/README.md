@@ -1,7 +1,7 @@
-# K10 Web Protection — macOS
+# K10 Web Protection: macOS
 
 > Free, open-source parental control and web filtering for macOS.
-> Blocks adult content, malware, and distracting websites — silently, persistently, and without a monthly subscription.
+> Blocks adult content, malware, and distracting websites, silently, persistently, and without a monthly subscription.
 
 **Platform:** macOS 12 Monterey or later · Apple Silicon (M1/M2/M3/M4) and Intel
 
@@ -17,21 +17,21 @@ The installer copies the app, registers the background services, and sets up all
 
 macOS will block the `.pkg` on first open with:
 
-> *"K10WebProtection-1.0.0.pkg" Not Opened — Apple could not verify it is free of malware…*
+> *"K10WebProtection-1.0.0.pkg" Not Opened, Apple could not verify it is free of malware…*
 
 This is expected for software not signed with a paid Apple Developer certificate. Fix it one of two ways:
 
-**Option A — System Settings:**
+**Option A, System Settings:**
 1. Click **Done** on the warning dialog
 2. Open **System Settings → Privacy & Security**
 3. Scroll to the **Security** section → click **Open Anyway**
 4. Enter your Mac password, then double-click the `.pkg` again
 
-**Option B — Terminal:**
+**Option B, Terminal:**
 ```bash
 xattr -d com.apple.quarantine ~/Downloads/K10WebProtection-1.0.0.pkg
 ```
-Then double-click the `.pkg` — no warning will appear.
+Then double-click the `.pkg`, no warning will appear.
 
 ---
 
@@ -61,27 +61,27 @@ K10 runs a local HTTP/HTTPS proxy on port 8080 and sets it as the system proxy. 
 
 - **932,000+ domain database** across 29 categories (pornography, malware, phishing, gambling, hacking, P2P, proxy bypass, violence, drugs, weapons, social media, and more)
 - **Four filter levels**: Minimal → Moderate → Default → High, plus fully Custom
-- **Focus Mode** — block social media sites on demand with a countdown timer
-- **Time Restrictions** — per-day schedules (e.g. 08:00–22:00 Mon–Fri)
+- **Focus Mode**: block social media sites on demand with a countdown timer
+- **Time Restrictions**: per-day schedules (e.g. 08:00 to 22:00 Mon to Fri)
 - **SafeSearch enforcement** on Google and Bing via HTTPS interception
-- **Website exceptions** — per-domain allow and block overrides
-- **URL keyword filtering** — block any URL containing a word or phrase
+- **Website exceptions**: per-domain allow and block overrides
+- **URL keyword filtering**: block any URL containing a word or phrase
 - **Activity log** with Top Blocked Categories chart
-- **Password-protected** admin panel — all changes require authentication
-- **Tamper-resistant** — LaunchAgent, watchdog, and immutable file flags keep it running
+- **Password-protected** admin panel, all changes require authentication
+- **Tamper-resistant**: LaunchAgent, watchdog, and immutable file flags keep it running
 
 ---
 
 ## Uninstall
 
-**The correct way — use the in-app uninstaller:**
+**The correct way, use the in-app uninstaller:**
 
 1. Open **K10 Web Protection**
 2. Go to **Setup → Password & Settings**
 3. Scroll to **Danger Zone** → click **Uninstall K10 Web Protection…**
 4. Enter your admin password
 
-The app closes and removes itself completely — app, LaunchAgents, firewall rules, system proxy, and config.
+The app closes and removes itself completely, app, LaunchAgents, firewall rules, system proxy, and config.
 
 > **Do not drag the app to Trash.** K10 locks its own files to resist tampering. Dragging it will fail and may leave the system proxy enabled, breaking internet access.
 
@@ -112,7 +112,7 @@ rm -rf ~/.k10webprotection
 
 If the proxy crashes while the system proxy is still active, all internet access fails.
 
-**Quickest fix — Terminal:**
+**Quickest fix, Terminal:**
 ```bash
 networksetup -listallnetworkservices | grep -v "An asterisk" | grep -v "^$" | while read svc; do
   networksetup -setwebproxystate "$svc" off
@@ -204,7 +204,7 @@ mac/
 | LaunchAgent (`KeepAlive: Crashed`) | Restarts app after force-kill |
 | Watchdog (every 10s) | Re-applies `uchg` locks, re-bootstraps LaunchAgent, re-enables system proxy |
 | `uchg` flag | Prevents deletion of binary and plists without root + explicit unlock |
-| PF firewall rule | Blocks QUIC (UDP 443) — survives reboots via `/etc/pf.conf` |
+| PF firewall rule | Blocks QUIC (UDP 443), survives reboots via `/etc/pf.conf` |
 | Password gate | Required for disable, uninstall, and all settings changes |
 
 ---
@@ -213,13 +213,13 @@ mac/
 
 ## Support This Project
 
-K10 Web Protection is free and open source. Distributing it **without Gatekeeper warnings** requires an Apple Developer ID certificate — **€99/year**.
+K10 Web Protection is free and open source. Distributing it **without Gatekeeper warnings** requires an Apple Developer ID certificate, **€99/year**.
 
 If this app has been useful to you, please consider donating:
 
-> 💛 **[Donate via PayPal](https://www.paypal.com/paypalme/Khaleeleu)** — even €1 helps keep this going
+> **[Donate via PayPal](https://www.paypal.com/paypalme/Khaleeleu)**: even €1 helps keep this going
 >
-> 🍎 **Goal: Apple Developer ID** — €99/year to sign and notarize releases so users can install without security warnings
+> **Goal: Apple Developer ID**: €99/year to sign and notarize releases so users can install without security warnings
 
 ---
 
