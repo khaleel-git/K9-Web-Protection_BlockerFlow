@@ -1,26 +1,42 @@
-# K10 Web Protection
+# K9 Web Protection
 
 A free, open-source parental control and web filter for macOS. Blocks adult content, malware, and distracting websites at the network level — across every browser, without a subscription.
 
 **Contact:** [hello@khaleel.eu](mailto:hello@khaleel.eu)
 
+> ⚠️ **This repository is no longer actively updated.**
+> It is kept public as the open-source foundation that **BlockerFlow** was built on. The code here stays available, but I am not currently publishing new changes to it.
+>
+> 🔑 **Need the latest BlockerFlow code?** The current source is not published here, but you are welcome to **request it from me directly** at [hello@khaleel.eu](mailto:hello@khaleel.eu).
+
 ---
 
-## Support This Project
+## 🚀 Try BlockerFlow — the app built from this project
 
-K10 Web Protection is free and open source. To distribute it on the internet **without Gatekeeper warnings**, an Apple Developer ID certificate is required — this costs **€99/year**.
+This repo was used to create **[BlockerFlow](https://blockerflow.khaleel.eu/)**, a maintained, polished mobile app for blocking distracting and harmful content and staying focused.
 
-> 💛 **[Donate via PayPal](https://www.paypal.com/paypalme/Khaleeleu)** — even €1 helps
->
-> 🍎 **Goal: Apple Developer ID** — €99/year to sign and notarize releases so users can install without warnings
+| | |
+|---|---|
+| 🌐 **Website** | [blockerflow.khaleel.eu](https://blockerflow.khaleel.eu/) |
+| 📱 **Android (Google Play)** | [Get BlockerFlow on Google Play](https://play.google.com/store/apps/details?id=eu.khaleel.blockerflow) |
 
-Every contribution goes directly toward keeping the app maintained, signed, and available for free.
+If you want protection and focus on your phone, with ongoing updates and support, **BlockerFlow is the recommended way to go.** The code in this repository is the starting point; BlockerFlow is where active development lives.
+
+[![Get it on Google Play](https://img.shields.io/badge/Google%20Play-Get%20BlockerFlow-3DDC84?logo=googleplay&logoColor=white)](https://play.google.com/store/apps/details?id=eu.khaleel.blockerflow)
+
+---
+
+## Support
+
+This project is free and open source. If it helped you, the best way to support my work is to **install [BlockerFlow](https://play.google.com/store/apps/details?id=eu.khaleel.blockerflow)** and share it with others.
+
+> 💛 **[Donate via PayPal](https://www.paypal.com/paypalme/Khaleeleu)** — optional, and always appreciated
 
 ---
 
 ## How it works
 
-K10 Web Protection installs a local HTTP/HTTPS proxy on your Mac and sets it as the system proxy. Every browser request — Safari, Chrome, Firefox, any app — passes through it before reaching the internet. Blocked sites never load; the user sees a clean block page instead.
+K9 Web Protection installs a local HTTP/HTTPS proxy on your Mac and sets it as the system proxy. Every browser request — Safari, Chrome, Firefox, any app — passes through it before reaching the internet. Blocked sites never load; the user sees a clean block page instead.
 
 Three independent layers work together:
 
@@ -36,7 +52,7 @@ For HTTPS, the proxy uses a CONNECT tunnel to see the hostname and block by doma
 ### Layer 2 — QUIC Firewall
 Modern browsers (especially Chrome) use **HTTP/3 over UDP port 443** — a protocol called QUIC. Because QUIC runs over UDP rather than TCP, it bypasses the system HTTP proxy entirely and the content proxy never sees the request.
 
-K10 installs a **PF (Packet Filter) firewall rule** at the macOS kernel level that drops all outbound UDP traffic on port 443. This forces browsers to fall back to TCP, where the content proxy can intercept and block them normally.
+K9 installs a **PF (Packet Filter) firewall rule** at the macOS kernel level that drops all outbound UDP traffic on port 443. This forces browsers to fall back to TCP, where the content proxy can intercept and block them normally.
 
 ```
 # /etc/pf.anchors/k10webprotection
@@ -46,7 +62,7 @@ block drop out quick proto udp to any port 443
 The rule is wired into `/etc/pf.conf` and reloaded at each boot. A watchdog re-applies it every 10 seconds if it gets flushed.
 
 ### Layer 3 — SafeSearch Enforcement
-For Google and Bing, K10 performs full **HTTPS MITM interception** to:
+For Google and Bing, K9 performs full **HTTPS MITM interception** to:
 - Inject `&safe=active` into every search request, forcing strict SafeSearch regardless of the user's account settings
 - Block the SafeSearch preferences page so it cannot be turned off
 - Redirect SafeSearch IPs via `/etc/hosts` as a secondary enforcement layer
@@ -55,7 +71,7 @@ For Google and Bing, K10 performs full **HTTPS MITM interception** to:
 
 ## Tamper Resistance
 
-K10 is designed to stay running even if someone tries to stop it:
+K9 is designed to stay running even if someone tries to stop it:
 
 | Mechanism | What it does |
 |-----------|-------------|
@@ -86,6 +102,7 @@ K10 is designed to stay running even if someone tries to stop it:
 | Platform | Status | Stack |
 |----------|--------|-------|
 | **macOS** | ✅ v1.0.0 | Go + Wails, `.pkg` installer |
+| **Chrome extension** | ✅ Live on the Chrome Web Store (search "K9 Web Protection") | Manifest V3, source in [chrome-extension/](chrome-extension/) |
 | Windows | 🔧 In progress | Go + Wails + NSIS |
 
 ---
@@ -111,7 +128,7 @@ For build-from-source instructions: [mac/README.md](mac/README.md)
 ## Project structure
 
 ```
-K10-Web-Protection/
+K9-Web-Protection_BlockerFlow/
 ├── mac/
 │   ├── app/                        # Go + Wails source
 │   │   ├── app.go                  # Business logic & bindings
@@ -143,11 +160,7 @@ Everything runs **100% locally on your device**. No browsing history, blocked do
 
 ## Contributing
 
-PRs welcome. Most impactful areas:
-
-- **Blocklist improvements** — add domains or keywords to `lists/categories/`
-- **Windows port** — bring macOS features to the Windows version
-- **Apple Developer ID** — [donate](https://www.paypal.com/paypalme/Khaleeleu) to fund code signing so releases install without warnings
+This repository is no longer actively maintained, so PRs may not be reviewed promptly. You are free to fork it and build your own version. For the latest BlockerFlow code, [email me](mailto:hello@khaleel.eu).
 
 ---
 
